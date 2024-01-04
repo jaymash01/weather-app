@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<VBox id="dialogRoot" xmlns:fx="http://javafx.com/fxml" stylesheets="@../styles/app.css">
+    <HBox id="dialogTitleBar" spacing="12" alignment="CENTER_LEFT" prefHeight="40">
+        <padding>
+            <Insets left="16"/>
+        </padding>
+        <Text id="dialogTitle" styleClass="text"/>
+    </HBox>
+    <VBox id="dialogContent" spacing="12">
+        <padding>
+            <Insets left="16" top="16" right="16" bottom="16"/>
+        </padding>
+        <Text id="dialogMessage" styleClass="text"/>
+    </VBox>
+    <HBox id="dialogFooter" alignment="CENTER_RIGHT" spacing="12">
+        <padding>
+            <Insets left="16" top="16" right="16" bottom="16"/>
+        </padding>
+        <Button id="closeDialogButton" text="OK" styleClass="button, outlined, button-large"/>
+    </HBox>
+</VBox>

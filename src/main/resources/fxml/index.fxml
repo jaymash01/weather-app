@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.text.Text?>
+
+<?import javafx.scene.control.Separator?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.jaymash.weatherapp.controllers.IndexController">
+    <HBox spacing="12" AnchorPane.leftAnchor="32" AnchorPane.topAnchor="24">
+        <ImageView fx:id="settingsLink" fitWidth="48" fitHeight="48" styleClass="link">
+            <Image url="@../images/gear.png"/>
+        </ImageView>
+        <ImageView fx:id="refreshLink" fitWidth="48" fitHeight="48" styleClass="link">
+            <Image url="@../images/refresh.png"/>
+        </ImageView>
+    </HBox>
+    <VBox spacing="16" AnchorPane.leftAnchor="32" AnchorPane.topAnchor="96">
+        <Text fx:id="date" styleClass="text"/>
+        <HBox spacing="16">
+            <Text fx:id="temperature" styleClass="text"/>
+            <ImageView fx:id="weatherIcon" fitWidth="80" fitHeight="80"/>
+        </HBox>
+        <VBox spacing="4" translateY="-16">
+            <Text fx:id="weatherDescription" styleClass="text"/>
+            <Text fx:id="location" styleClass="text"/>
+            <HBox spacing="8" alignment="CENTER_LEFT">
+                <Text fx:id="maxTemperature" styleClass="text"/>
+                <Text text="/" styleClass="text"/>
+                <Text fx:id="minTemperature" styleClass="text"/>
+                <Text fx:id="feelsLike" styleClass="text"/>
+            </HBox>
+        </VBox>
+        <VBox spacing="8">
+            <HBox spacing="16">
+                <Separator orientation="VERTICAL"/>
+                <VBox spacing="2" prefWidth="80">
+                    <Text text="Wind" styleClass="text, text-emphasis-medium"/>
+                    <Text fx:id="wind" styleClass="text"/>
+                </VBox>
+                <Separator orientation="VERTICAL"/>
+                <VBox spacing="2" prefWidth="80">
+                    <Text text="Humidity" styleClass="text, text-emphasis-medium"/>
+                    <Text fx:id="humidity" styleClass="text"/>
+                </VBox>
+            </HBox>
+            <HBox spacing="16">
+                <Separator orientation="VERTICAL"/>
+                <VBox spacing="2" prefWidth="80">
+                    <Text text="Visibility" styleClass="text, text-emphasis-medium"/>
+                    <Text fx:id="visibility" styleClass="text"/>
+                </VBox>
+                <Separator orientation="VERTICAL"/>
+                <VBox spacing="2" prefWidth="80">
+                    <Text text="Pressure" styleClass="text, text-emphasis-medium"/>
+                    <Text fx:id="pressure" styleClass="text"/>
+                </VBox>
+            </HBox>
+        </VBox>
+    </VBox>
+    <VBox spacing="32" AnchorPane.rightAnchor="32" AnchorPane.topAnchor="96">
+        <Pane fx:id="forecastChart"/>
+        <HBox spacing="16" alignment="TOP_CENTER" id="forecastDays">
+            <Button fx:id="forecastDay0" onAction="#showForecastDay0"/>
+            <Button fx:id="forecastDay1" onAction="#showForecastDay1"/>
+            <Button fx:id="forecastDay2" onAction="#showForecastDay2"/>
+        </HBox>
+    </VBox>
+    <HBox styleClass="alert" alignment="CENTER_LEFT" AnchorPane.bottomAnchor="96" AnchorPane.leftAnchor="32">
+        <Text fx:id="alertMessage" styleClass="text"/>
+    </HBox>
+</AnchorPane>

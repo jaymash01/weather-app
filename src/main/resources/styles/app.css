@@ -1,0 +1,245 @@
+#root {
+    -fx-background-color: #083e8c;
+    -fx-background-image: url("../images/background.png");
+    -fx-background-repeat: stretch;
+    -fx-background-size: cover, auto;
+    -fx-font-size: 14;
+    -fx-text-fill: #fff;
+}
+
+.text {
+    -fx-fill: #fff;
+}
+
+.text.text-title {
+    -fx-font-size: 16;
+}
+
+.text-emphasis-medium {
+    -fx-fill: rgba(255, 255, 255, 0.76);
+}
+
+.link {
+    -fx-cursor: hand;
+}
+
+.link:hover {
+    -fx-opacity: 0.75;
+}
+
+.alert {
+    -fx-pref-width: 380;
+    -fx-background-color: #faba23;
+    -fx-background-radius: 2;
+    -fx-padding: 5;
+}
+
+.alert .text {
+    -fx-fill: #000;
+}
+
+.button,
+.button:focus,
+.button:focused {
+    -fx-background-color: #083e8c;
+    -fx-padding: 4 16 4 16;
+    -fx-background-radius: 0;
+    -fx-cursor: hand;
+    -fx-focus-color: transparent;
+}
+
+.button.outlined {
+    -fx-border-color: #046eb0;
+    -fx-border-width: 1;
+    -fx-border-insets: 2;
+    -fx-border-style: solid;
+}
+
+.button.button-large {
+    -fx-padding: 6 24 6 24;
+}
+
+.check-box {
+    -fx-background-color: #ccc;
+    -fx-padding: 4;
+    -fx-font-size: 12;
+}
+
+.radio-button {
+    -fx-focus-color: #083e8c;
+}
+
+.radio-button:selected .radio .dot {
+    -fx-background-color: #083e8c;
+    -fx-background-insets: 0;
+}
+
+.text-field {
+    -fx-pref-width: 300;
+    -fx-pref-height: 36;
+    -fx-text-fill: #000;
+    -fx-focus-color: #083e8c;
+    -fx-prompt-text-fill: rgba(0, 0, 0, 0.62);
+    -fx-highlight-fill: #083e8c;
+    -fx-border-radius: 0;
+    -fx-background-radius: 0;
+}
+
+.scroll-pane {
+    -fx-hbar-policy: as-needed;
+    -fx-vbar-policy: as-needed;
+    -fx-focus-color: transparent;
+    -fx-background-color: transparent;
+    -fx-background: #fff;
+}
+
+.scroll-pane .text {
+    -fx-fill: #000;
+}
+
+.separator {
+    -fx-background-radius: 0;
+}
+
+.separator *.line {
+    -fx-border-color: #fff;
+    -fx-border-width: 1;
+}
+
+.separator.dashed .line {
+    -fx-border-style: dashed;
+}
+
+#titleBar {
+    -fx-background-color: #083e8c;
+}
+
+#iconifyButton, #closeButton {
+    -fx-background-color: transparent;
+    -fx-pref-height: 40;
+    -fx-border-radius: 0;
+    -fx-background-radius: 0;
+}
+
+#iconifyButton:hover {
+    -fx-background-color: #05357a;
+}
+
+#closeButton:hover {
+    -fx-background-color: #cc0000;
+}
+
+#temperature {
+    -fx-font-size: 60;
+}
+
+#weatherDescription {
+    -fx-font-size: 24;
+}
+
+#forecastDays .button {
+    -fx-background-color: #046eb0;
+    -fx-pref-width: 112;
+}
+
+#forecastDays .button:hover {
+    -fx-opacity: 0.75;
+}
+
+.chart .chart-title {
+  -fx-text-fill: #fff;
+  -fx-font-size: 16;
+}
+
+.chart .axis-label {
+  -fx-text-fill: #fff;
+}
+
+.chart .axis {
+   -fx-tick-label-fill: #fff;
+   -fx-tick-length: 12;
+   -fx-minor-tick-length: 4;
+}
+
+.chart .axis:left {
+   /*-fx-border-color: transparent rgba(255, 255, 255, 0.38) transparent transparent;*/
+}
+
+.chart .axis:bottom {
+   /*-fx-border-color: rgba(255, 255, 255, 0.38) transparent transparent transparent;*/
+}
+
+.chart .chart-vertical-grid-lines {
+    -fx-stroke: transparent;
+}
+
+.chart .chart-horizontal-grid-lines {
+    -fx-stroke: transparent;
+}
+
+.chart .chart-content, .chart .chart-plot-background {
+    -fx-padding: 0;
+    -fx-background-color: transparent;
+}
+
+.chart .chart-content {
+
+}
+
+.chart .chart-series-area-line {
+    -fx-stroke: #faba23;
+    -fx-stroke-width: 1;
+    -fx-smooth: true;
+}
+
+.chart .chart-area-symbol {
+    -fx-background-color: #faba23;
+}
+
+.chart .chart-legend {
+    -fx-background-color: transparent;
+}
+
+.chart .chart-legend-item-symbol {
+   -fx-background-radius: 0;
+}
+
+.chart .chart-legend-item {
+    -fx-text-fill: #fff;
+}
+
+#dialogRoot {
+    -fx-background-color: #083e8c;
+    -fx-text-fill: #fff;
+    -fx-pref-width: 500;
+}
+
+#dialogTitleBar {
+    -fx-background-color: #05357a;
+}
+
+#dialogFooter .button {
+    -fx-background-color: #05357a;
+}
+
+#cityList {
+    -fx-effect: dropshadow(three-pass-box, #000, 4, 0, 0, 0);
+}
+
+.city-list-item {
+    -fx-pref-width: 300;
+    -fx-padding: 6 12 6 12;
+    -fx-spacing: 12;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-style: solid;
+    -fx-border-color: #083e8c;
+    -fx-cursor: hand;
+}
+
+.city-list-item:hover {
+    -fx-background-color: rgba(8, 62, 140, 0.18);
+}
+
+.city-list-item .text {
+    -fx-fill: #000;
+}
