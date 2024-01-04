@@ -80,22 +80,22 @@ public class App extends Application {
     }
 
     public void gotoIndex() {
-        IndexController indexController = (IndexController) createScene("/fxml/index.fxml");
+        IndexController controller = (IndexController) createScene("/fxml/index.fxml");
 
-        if (indexController != null) {
-            indexController.setApp(this);
-            indexController.setStage(this.stage);
-            indexController.initialize();
+        if (controller != null) {
+            controller.setApp(this);
+            controller.setStage(stage);
+            controller.initialize();
         }
     }
 
     public void gotoSettings() {
-        SettingsController indexController = (SettingsController) createScene("/fxml/settings.fxml");
+        SettingsController controller = (SettingsController) createScene("/fxml/settings.fxml");
 
-        if (indexController != null) {
-            indexController.setApp(this);
-            indexController.setStage(this.stage);
-            indexController.initialize();
+        if (controller != null) {
+            controller.setApp(this);
+            controller.setStage(stage);
+            controller.initialize();
         }
     }
 

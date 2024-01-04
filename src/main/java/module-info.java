@@ -4,7 +4,6 @@ module com.jaymash.weatherapp {
     requires javafx.fxml;
     requires gson;
     requires retrofit2;
-    requires annotations;
     requires okhttp3;
     requires retrofit2.converter.gson;
     requires okhttp3.logging;

@@ -4,7 +4,6 @@ import java.net.URL;
 import java.util.*;
 
 import com.jaymash.weatherapp.App;
-import com.jaymash.weatherapp.Constants;
 import com.jaymash.weatherapp.dialogs.MessageDialog;
 import com.jaymash.weatherapp.models.*;
 import com.jaymash.weatherapp.network.DataService;
@@ -111,7 +110,7 @@ public class IndexController implements Initializable {
         params.put("units", preferences.getUnits());
         params.put("id", preferences.getCity().getId());
 
-        DataService service = RetrofitClientInstance.getInstance(Constants.BASE_URL).create(DataService.class);
+        DataService service = RetrofitClientInstance.get().create(DataService.class);
         Call<WeatherResponse> call = service.getWeather(params);
         call.enqueue(new Callback<WeatherResponse>() {
             @Override
@@ -158,7 +157,7 @@ public class IndexController implements Initializable {
         params.put("units", preferences.getUnits());
         params.put("id", preferences.getCity().getId());
 
-        DataService service = RetrofitClientInstance.getInstance(Constants.BASE_URL).create(DataService.class);
+        DataService service = RetrofitClientInstance.get().create(DataService.class);
         Call<ForecastResponse> call = service.getForecast(params);
         call.enqueue(new Callback<ForecastResponse>() {
             @Override

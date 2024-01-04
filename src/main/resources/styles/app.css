@@ -201,7 +201,7 @@
 }
 
 .chart .chart-series-area-fill.default-color0 {
-    -fx-fill: linear-gradient(to bottom, rgba(250, 186, 35, 0.48), rgba(250, 186, 35, 0.62));
+    -fx-fill: linear-gradient(to bottom, rgba(250, 186, 35, 0.42), rgba(250, 186, 35, 0.62));
 }
 
 .chart .chart-area-symbol.default-color0 {
