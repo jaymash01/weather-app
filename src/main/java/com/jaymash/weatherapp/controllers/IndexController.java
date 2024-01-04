@@ -297,7 +297,7 @@ public class IndexController implements Initializable {
         showForecast(2);
     }
 
-    public final void initialize() {
+    public void initialize() {
         settingsLink.setOnMouseClicked((MouseEvent ev) -> app.gotoSettings());
 
         Application.Parameters parameters = app.getParameters();
