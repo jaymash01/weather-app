@@ -102,12 +102,15 @@
 }
 
 .separator *.line {
-    -fx-border-color: #fff;
-    -fx-border-width: 1;
+    -fx-border-color: rgba(255, 255, 255, 0.38);
 }
 
-.separator.dashed .line {
+.separator.dashed *.line {
     -fx-border-style: dashed;
+}
+
+.separator:vertical *.line {
+    -fx-border-width: 0 0 0 1;
 }
 
 #titleBar {
@@ -161,12 +164,16 @@
    -fx-minor-tick-length: 4;
 }
 
+.chart .axis .axis-tick-mark, .chart .axis .axis-minor-tick-mark {
+    -fx-stroke: rgba(255, 255, 255, 0.38);
+}
+
 .chart .axis:left {
-   /*-fx-border-color: transparent rgba(255, 255, 255, 0.38) transparent transparent;*/
+    -fx-border-color: transparent rgba(255, 255, 255, 0.38) transparent transparent;
 }
 
 .chart .axis:bottom {
-   /*-fx-border-color: rgba(255, 255, 255, 0.38) transparent transparent transparent;*/
+    -fx-border-color: rgba(255, 255, 255, 0.38) transparent transparent transparent;
 }
 
 .chart .chart-vertical-grid-lines {

@@ -6,9 +6,9 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.text.Text?>
 
-<?import javafx.scene.control.Separator?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.jaymash.weatherapp.controllers.IndexController">
     <HBox spacing="12" AnchorPane.leftAnchor="32" AnchorPane.topAnchor="24">
         <ImageView fx:id="settingsLink" fitWidth="48" fitHeight="48" styleClass="link">
@@ -19,7 +19,7 @@
         </ImageView>
     </HBox>
     <VBox spacing="16" AnchorPane.leftAnchor="32" AnchorPane.topAnchor="96">
-        <Text fx:id="date" styleClass="text"/>
+        <Text fx:id="date" styleClass="text, text-emphasis-medium"/>
         <HBox spacing="16">
             <Text fx:id="temperature" styleClass="text"/>
             <ImageView fx:id="weatherIcon" fitWidth="80" fitHeight="80"/>
