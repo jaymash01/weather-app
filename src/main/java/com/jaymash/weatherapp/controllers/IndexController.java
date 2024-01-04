@@ -263,8 +263,6 @@ public class IndexController implements Initializable {
                 NumberAxis yAxis = new NumberAxis(minTemp - 1, maxTemp + 1, 1);
                 yAxis.setMinorTickCount(0);
                 AreaChart<String, Number> chart = new AreaChart<>(xAxis, yAxis);
-                chart.setMaxHeight(320);
-                chart.setLegendVisible(false);
                 XYChart.Series<String, Number> series = new XYChart.Series<>();
 
                 for (ForecastListItem forecastChartItem : forecastChartItems) {

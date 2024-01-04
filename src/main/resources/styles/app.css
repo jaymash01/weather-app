@@ -149,6 +149,12 @@
     -fx-opacity: 0.75;
 }
 
+.chart {
+    -fx-max-height: 320;
+    -fx-legend-visible: false;
+    -fx-create-symbols: true;
+}
+
 .chart .chart-title {
   -fx-text-fill: #fff;
   -fx-font-size: 16;
@@ -189,18 +195,17 @@
     -fx-background-color: transparent;
 }
 
-.chart .chart-content {
-
-}
-
-.chart .chart-series-area-line {
+.chart .chart-series-area-line.default-color0 {
     -fx-stroke: #faba23;
-    -fx-stroke-width: 1;
-    -fx-smooth: true;
+    -fx-stroke-width: 0;
 }
 
-.chart .chart-area-symbol {
-    -fx-background-color: #faba23;
+.chart .chart-series-area-fill.default-color0 {
+    -fx-fill: linear-gradient(to bottom, rgba(250, 186, 35, 0.48), rgba(250, 186, 35, 0.62));
+}
+
+.chart .chart-area-symbol.default-color0 {
+    -fx-background-color: #083e8c, #faba23;
 }
 
 .chart .chart-legend {
