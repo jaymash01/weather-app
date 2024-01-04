@@ -59,7 +59,7 @@ public class SettingsController implements Initializable {
     }
 
     @FXML
-    protected void save() {
+    private void save() {
         try {
             File file = new File(getClass().getResource("/preferences.txt").toURI());
             String toWrite = new Gson().toJson(preferences);
