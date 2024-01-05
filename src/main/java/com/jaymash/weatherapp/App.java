@@ -53,7 +53,7 @@ public class App extends Application {
     }
 
     private void loadPreferences() {
-        try (InputStream inputStream = getClass().getResourceAsStream("/preferences.txt")) {
+        try (InputStream inputStream = getClass().getResourceAsStream("/preferences.json")) {
             preferences = new Gson().fromJson(FileUtils.readFromInputStream(inputStream), Preferences.class);
         } catch (Exception ex) {
             ex.printStackTrace();
