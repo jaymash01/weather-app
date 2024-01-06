@@ -132,7 +132,6 @@ public class IndexController implements Initializable {
 
         Thread thread = new Thread(runnable);
         thread.start();
-
     }
 
     private void loadForecast() {
