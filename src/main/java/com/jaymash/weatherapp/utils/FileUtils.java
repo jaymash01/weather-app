@@ -5,10 +5,24 @@ import java.io.*;
 public class FileUtils {
 
     public static String readFromInputStream(InputStream inputStream) {
-        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "utf-8"))) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "utf-8"))) {
             StringBuilder stringBuilder = new StringBuilder();
             String line = null;
-            while ((line = bufferedReader.readLine()) != null) {
+            while ((line = reader.readLine()) != null) {
+                stringBuilder.append(line);
+            }
+
+            return stringBuilder.toString();
+        } catch (Exception ex) {
+            return null;
+        }
+    }
+
+    public static String readFile(File file) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            StringBuilder stringBuilder = new StringBuilder();
+            String line = null;
+            while ((line = reader.readLine()) != null) {
                 stringBuilder.append(line);
             }
 

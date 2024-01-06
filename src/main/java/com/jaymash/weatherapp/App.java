@@ -20,6 +20,7 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.File;
 import java.io.InputStream;
 
 public class App extends Application {
@@ -53,11 +54,8 @@ public class App extends Application {
     }
 
     private void loadPreferences() {
-        try (InputStream inputStream = getClass().getResourceAsStream("/preferences.json")) {
-            preferences = new Gson().fromJson(FileUtils.readFromInputStream(inputStream), Preferences.class);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+        File file = new File("preferences.json");
+        preferences = new Gson().fromJson(FileUtils.readFile(file), Preferences.class);
     }
 
     private Initializable createScene(String fxmlPath) {

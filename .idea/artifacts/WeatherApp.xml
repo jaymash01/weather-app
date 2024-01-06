@@ -1,6 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jlink" name="WeatherApp">
-    <output-path>$PROJECT_DIR$/out/artifacts/WeatherApp</output-path>
-    <root id="root" />
-  </artifact>
-</component>

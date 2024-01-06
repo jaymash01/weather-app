@@ -1,14 +1,15 @@
 package com.jaymash.weatherapp.controllers;
 
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.*;
 
+import com.google.gson.Gson;
 import com.jaymash.weatherapp.App;
 import com.jaymash.weatherapp.dialogs.MessageDialog;
 import com.jaymash.weatherapp.models.*;
-import com.jaymash.weatherapp.network.DataService;
-import com.jaymash.weatherapp.network.RetrofitClientInstance;
 import com.jaymash.weatherapp.utils.DateUtils;
+import com.jaymash.weatherapp.utils.FileUtils;
 import com.jaymash.weatherapp.utils.StringUtils;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -25,9 +26,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class IndexController implements Initializable {
 
@@ -105,96 +103,64 @@ public class IndexController implements Initializable {
     }
 
     private void loadWeather() {
-        HashMap<String, Object> params = new HashMap<>();
-        params.put("appid", apiToken);
-        params.put("units", preferences.getUnits());
-        params.put("id", preferences.getCity().getId());
+        Runnable runnable = () -> {
+            try {
+                String[] params = new String[]{
+                        "appid=" + apiToken,
+                        "units=" + preferences.getUnits(),
+                        "id=" + preferences.getCity().getId()
+                };
 
-        DataService service = RetrofitClientInstance.get().create(DataService.class);
-        Call<WeatherResponse> call = service.getWeather(params);
-        call.enqueue(new Callback<WeatherResponse>() {
-            @Override
-            public void onResponse(Call<WeatherResponse> call, Response<WeatherResponse> response) {
-                if (response.isSuccessful()) {
-                    weatherResponse = response.body();
+                URL url = new URL("https://api.openweathermap.org/data/2.5/weather?" + String.join("&", params));
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("GET");
+                connection.setRequestProperty("Accept", "application/json");
 
-                    Platform.runLater(new Runnable() {
-                        @Override
-                        public void run() {
-                            showWeather();
-                            loadForecast();
-                        }
-                    });
-                } else {
-                    Platform.runLater(new Runnable() {
-                        @Override
-                        public void run() {
-                            new MessageDialog(stage, "Network Error", "Could not connect. Please try again later.").show();
-                        }
-                    });
-                }
+                String response = FileUtils.readFromInputStream(connection.getInputStream());
+                weatherResponse = new Gson().fromJson(response, WeatherResponse.class);
 
-                call.cancel();
-            }
-
-            @Override
-            public void onFailure(Call<WeatherResponse> call, Throwable t) {
-                Platform.runLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        new MessageDialog(stage, "Network Error", "Could not connect. Please try again later.").show();
-                    }
+                Platform.runLater(() -> {
+                    showWeather();
+                    loadForecast();
                 });
 
-                call.cancel();
+                connection.disconnect();
+            } catch (Exception ex) {
+                Platform.runLater(() -> new MessageDialog(stage, "Error", ex.getMessage()).show());
             }
-        });
+        };
+
+        Thread thread = new Thread(runnable);
+        thread.start();
+
     }
 
     private void loadForecast() {
-        HashMap<String, Object> params = new HashMap<>();
-        params.put("appid", apiToken);
-        params.put("units", preferences.getUnits());
-        params.put("id", preferences.getCity().getId());
+        Runnable runnable = () -> {
+            try {
+                String[] params = new String[]{
+                        "appid=" + apiToken,
+                        "units=" + preferences.getUnits(),
+                        "id=" + preferences.getCity().getId()
+                };
 
-        DataService service = RetrofitClientInstance.get().create(DataService.class);
-        Call<ForecastResponse> call = service.getForecast(params);
-        call.enqueue(new Callback<ForecastResponse>() {
-            @Override
-            public void onResponse(Call<ForecastResponse> call, Response<ForecastResponse> response) {
-                if (response.isSuccessful()) {
-                    forecastResponse = response.body();
+                URL url = new URL("https://api.openweathermap.org/data/2.5/forecast?" + String.join("&", params));
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("GET");
+                connection.setRequestProperty("Accept", "application/json");
 
-                    Platform.runLater(new Runnable() {
-                        @Override
-                        public void run() {
-                            showForecast(0);
-                        }
-                    });
-                } else {
-                    Platform.runLater(new Runnable() {
-                        @Override
-                        public void run() {
-                            new MessageDialog(stage, "Network Error", "Could not connect. Please try again later.").show();
-                        }
-                    });
-                }
+                String response = FileUtils.readFromInputStream(connection.getInputStream());
+                forecastResponse = new Gson().fromJson(response, ForecastResponse.class);
 
-                call.cancel();
+                Platform.runLater(() -> showForecast(0));
+                connection.disconnect();
+            } catch (Exception ex) {
+                Platform.runLater(() -> new MessageDialog(stage, "Error", ex.getMessage()).show());
             }
+        };
 
-            @Override
-            public void onFailure(Call<ForecastResponse> call, Throwable t) {
-                Platform.runLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        new MessageDialog(stage, "Network Error", "Could not connect. Please try again later.").show();
-                    }
-                });
-
-                call.cancel();
-            }
-        });
+        Thread thread = new Thread(runnable);
+        thread.start();
     }
 
     private void showWeather() {
@@ -321,7 +287,6 @@ public class IndexController implements Initializable {
         alertMessage.getParent().setVisible(false);
         date.getParent().setVisible(false);
         forecastChart.getParent().setVisible(false);
-
         refreshLink.setOnMouseClicked((MouseEvent ev) -> loadWeather());
     }
 
