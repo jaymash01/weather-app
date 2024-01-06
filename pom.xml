@@ -73,8 +73,8 @@
                         </goals>
                         <configuration>
                             <outputDirectory>${project.build.directory}/dependencies</outputDirectory>
-                            <overWriteReleases>false</overWriteReleases>
-                            <overWriteSnapshots>false</overWriteSnapshots>
+                            <overWriteReleases>true</overWriteReleases>
+                            <overWriteSnapshots>true</overWriteSnapshots>
                             <overWriteIfNewer>true</overWriteIfNewer>
                         </configuration>
                     </execution>
@@ -140,9 +140,7 @@
                                 <name>WeatherApp</name>
                                 <module>com.jaymash.weatherapp/com.jaymash.weatherapp.App</module>
                             </launcher>
-                            <outputDirectory>
-                                ${project.build.directory}/jlink-image
-                            </outputDirectory>
+                            <outputDirectory>${project.build.directory}/jlink-image</outputDirectory>
                         </configuration>
                     </execution>
                 </executions>
