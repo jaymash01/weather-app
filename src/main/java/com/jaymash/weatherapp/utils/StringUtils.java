@@ -11,7 +11,7 @@ public class StringUtils {
         }
 
         return Arrays.stream(text.split("\\s+"))
-                .map(word -> Character.toUpperCase(word.charAt(0)) + word.substring(1))
+                .map((word) -> Character.toUpperCase(word.charAt(0)) + word.substring(1))
                 .collect(Collectors.joining(" "));
     }
 
